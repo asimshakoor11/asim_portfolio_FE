@@ -258,7 +258,7 @@ ul {
     left: 0;
     top: 0;
     padding: 30px;
-    height: 100%;
+    height: 100vh;
     border: 1px solid var(--bg-black-50);
     display: flex;
     justify-content: center;
@@ -834,16 +834,26 @@ h3.my-profession {
     width: 100%;
     background-color: transparent;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     transition: all 0.6s ease;
     opacity: 0;
 }
 
+
+.portfolio .portfolio-item-inner .portfolio-img .overlay1 {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
 .portfolio .portfolio-item-inner .portfolio-img:hover .overlay {
     background-color: rgba(0, 0, 0, 0.6);
     opacity: 1;
 }
+
 
 .portfolio .portfolio-item-inner .portfolio-img .overlay h4 {
     color: #ffffff;
@@ -1053,6 +1063,170 @@ h3.my-profession {
 .style-switcher .day-night {
     /* top: 55px; */
 }
+
+
+
+/* lightbox  */
+.lightbox {
+    position: fixed;
+    z-index: 1099;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    cursor: zoom-out;
+    display: none;
+    color: white;
+    padding: 0px 20px;
+    overflow-y: scroll;
+}
+
+.lightbox::-webkit-scrollbar {
+    width: 5px;
+}
+
+.lightbox::-webkit-scrollbar-track {
+    background: var(--bg-black-100);
+}
+
+.lightbox::-webkit-scrollbar-thumb {
+    background: var(--skin-color);
+    border-radius: 10px;
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox .lightbox-img {
+    /* max-height: 600px; */
+    display: flex;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    /* padding-top: 40px; */
+}
+
+.lightbox .img-box {
+    position: relative;
+    cursor: auto;
+}
+
+.lightbox .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.lightbox .lightbox-counter {
+    font-style: italic;
+}
+
+.lightbox .lightbox-close {
+    height: 30px;
+    width: 30px;
+    display: block;
+    /* position: absolute; */
+    right: 0;
+    top: 10px;
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 28px;
+    cursor: zoom-out;
+}
+
+.lightbox .lightbox-caption {
+    background-color: #ffffff;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 0;
+
+}
+
+.lightbox .lightbox-caption .lightbox-captop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.lightbox .lightbox-caption .lightbox-captop a {
+    padding: 8px 35px;
+}
+
+.lightbox .lightbox-caption .lightbox-category {
+    padding-right: 50px;
+    font-size: 22px;
+    font-weight: bolder;
+    width: fit-content;
+    padding-left: 20px;
+}
+
+
+.lightbox .lightbox-caption .lightbox-des {
+    padding-right: 50px;
+    font-size: 16px;
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-align: justify;
+}
+
+
+.lightbox .lightbox-controls .prev,
+.lightbox .lightbox-controls .next {
+    position: absolute;
+    height: 72%;
+    top: 50px;
+    cursor: pointer;
+    display: flex;
+    
+}
+
+.lightbox .lightbox-controls .prev {
+    left: 0;
+    width: 50%;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+.lightbox .lightbox-controls .next {
+    right: 0;
+    width: 50%;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+
+
+.lightbox .lightbox-controls .prev i,
+.lightbox .lightbox-controls .next i {
+    margin-top: 40%;
+    height: min-content;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 2px;
+    transition: all 0.5s;
+    color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+.lightbox .lightbox-controls .prev:hover i,
+.lightbox .lightbox-controls .next:hover i {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 
 
 
