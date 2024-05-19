@@ -241,8 +241,9 @@ function togglearea2() {
 
 /* Back to top button
    */
-let backtotop = select('.back-to-top')
-if (backtotop) {
+
+$(".back-to-top").click(function () {
+
     const toggleBacktotop = () => {
         if (window.scrollY > 100) {
             backtotop.classList.add('active')
@@ -251,8 +252,8 @@ if (backtotop) {
         }
     }
     window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-}
+    // onscroll(document, toggleBacktotop)
+})
 
 // ******sending email 
 
@@ -310,6 +311,80 @@ function downlaodcv(){
     createToast("cvdownlaod");
 
 }
+
+
+let index = 0;
+const totalWorkItems = $(".work-item").length;
+let widthhh;
+let newHeight;
+let adjustedHeight;
+
+$(document).ready(function () {
+
+    // set lightbox img max height 
+    const wHeight = $(window).height();
+    newHeight = wHeight * 0.25; // 50% of wHeight
+    adjustedHeight = wHeight - newHeight; // 50% less than wHeight
+    $(".lightbox-img").css("max-height", adjustedHeight + "px");
+    //lightbox
+    $(".btn-detailss").click(function () {
+        // index = ($(this).parent(".work-item").index());
+        index = ($(this).parent().parent().parent().parent().parent().index());
+        $(".lightbox").addClass("open")
+        lightboxSlideShow();
+    })
+
+    $(".lightbox .prev").click(function () {
+        if (index == 0) {
+            index = totalWorkItems - 1;
+        }
+        else {
+            index--;
+        }
+        lightboxSlideShow();
+    })
+
+    $(".lightbox .next").click(function () {
+        if (index == totalWorkItems - 1) {
+            index = 0;
+        }
+        else {
+            index++;
+        }
+        lightboxSlideShow();
+    })
+
+    $(".lightbox-close").click(function () {
+        $(".lightbox").removeClass("open");
+    })
+
+    $(".lightbox").click(function (event) {
+        if ($(event.target).hasClass("lightbox")) {
+            $(this).removeClass("open");
+        }
+    })
+})
+
+function lightboxSlideShow() {
+    const imgSrc = $(".work-item").eq(index).find("img").attr("data-large");
+    const category = $(".work-item").eq(index).find("h4").html();
+    const des = $(".work-item").eq(index).find("p").html();
+    const link = $(".work-item").eq(index).find("a").attr("href");
+
+    $(".lightbox-img").attr("src", imgSrc);
+    $(".lightbox-category").html(category);
+    $(".lightbox-des").html(des);
+    $(".lightbox-link").attr("href", link);
+    $(".lightbox-counter").html((index + 1) + "/" + totalWorkItems );
+    widthhh = $(".lightbox-img").width()
+    $(".lightbox-des").css("max-width", widthhh + "px");
+    console.log(widthhh)
+}
+
+
+
+
+
 
 
 
